@@ -3,7 +3,6 @@ const navbar = document.getElementById("navbar");
 const navToggle = document.getElementById("nav-toggle");
 const navMenu = document.getElementById("nav-menu");
 const navLinks = document.querySelectorAll(".nav-link");
-const contactForm = document.getElementById("contact-form");
 
 // ===== Navbar Scroll Effect =====
 let lastScrollY = window.scrollY;
@@ -73,83 +72,6 @@ document
     el.classList.add("animate-on-scroll");
     observer.observe(el);
   });
-
-// ===== Form Validation =====
-if (contactForm) {
-  contactForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const nameInput = document.getElementById("name");
-    const emailInput = document.getElementById("email");
-    const messageInput = document.getElementById("message");
-
-    let isValid = true;
-
-    // Clear previous errors
-    document
-      .querySelectorAll(".form-error")
-      .forEach((el) => (el.textContent = ""));
-
-    // Validate name
-    if (nameInput.value.trim().length < 2) {
-      showError(nameInput, "Please enter your name");
-      isValid = false;
-    }
-
-    // Validate email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(emailInput.value)) {
-      showError(emailInput, "Please enter a valid email");
-      isValid = false;
-    }
-
-    // Validate message
-    if (messageInput.value.trim().length < 10) {
-      showError(
-        messageInput,
-        "Please enter a message (at least 10 characters)",
-      );
-      isValid = false;
-    }
-
-    if (isValid) {
-      // Simulate form submission
-      const submitBtn = contactForm.querySelector('button[type="submit"]');
-      const originalText = submitBtn.innerHTML;
-
-      submitBtn.innerHTML = "<span>Sending...</span>";
-      submitBtn.disabled = true;
-
-      setTimeout(() => {
-        submitBtn.innerHTML = "<span>Message Sent!</span>";
-        submitBtn.style.background = "var(--sea-green)";
-
-        // Reset form
-        contactForm.reset();
-
-        setTimeout(() => {
-          submitBtn.innerHTML = originalText;
-          submitBtn.disabled = false;
-          submitBtn.style.background = "";
-        }, 2000);
-      }, 1500);
-    }
-  });
-}
-
-function showError(input, message) {
-  const errorSpan = input.parentElement.querySelector(".form-error");
-  if (errorSpan) {
-    errorSpan.textContent = message;
-  }
-  input.style.borderColor = "var(--punch-red)";
-
-  input.addEventListener("input", function handler() {
-    errorSpan.textContent = "";
-    input.style.borderColor = "";
-    input.removeEventListener("input", handler);
-  });
-}
 
 // ===== Typewriter Effect for Hero =====
 const heroName = document.querySelector(".name-text");
