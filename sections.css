@@ -43,6 +43,11 @@ section {
   align-items: center;
 }
 
+.about-content,
+.about-visual {
+  min-width: 0;
+}
+
 @media (max-width: 900px) {
   .about-grid { grid-template-columns: 1fr; }
 }
@@ -50,6 +55,7 @@ section {
 .about-text {
   color: var(--text-secondary);
   margin-bottom: var(--space-md);
+  overflow-wrap: anywhere;
 }
 
 .about-text strong { color: var(--sea-green); }
@@ -122,6 +128,7 @@ section {
   font-size: 0.875rem;
   line-height: 1.8;
   overflow-x: auto;
+  max-width: 100%;
 }
 
 .code-keyword { color: var(--punch-red); }
