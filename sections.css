@@ -478,6 +478,20 @@ section {
 
 @media (max-width: 600px) {
   .info-cards-row { grid-template-columns: 1fr; }
+
+  .visual-card {
+    max-width: 100%;
+  }
+
+  .code-snippet {
+    width: 100%;
+  }
+
+  .code-content {
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: hidden;
+  }
 }
 
 .info-card {
